@@ -10,7 +10,7 @@ this script supports a using git
 # FUNCTIONS
 
 -----------------------------------
-|  Name  |  Command  |    Key     | 
+|  Name  |  Command  |    Bind    | 
 +---------------------------------+
 | init   | Gitinit   | <leader>gi | 
 | add    | Gitadd    | <leader>ga | 
