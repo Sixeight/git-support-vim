@@ -10,13 +10,13 @@ this script supports a using git
 # FUNCTIONS
 
 -----------------------------------
-|  Name  |  Command  |    Bind    | 
+|  Name  |  Command  |    Bind    |
 +---------------------------------+
-| init   | Gitinit   | <leader>gi | 
-| add    | Gitadd    | <leader>ga | 
-| commit | Gitcommit | <leader>gc | 
-| push   | Gitpush   | <leader>gp | 
-| status | Gitstatus | <leader>gs | 
-| diff   | Gitdif    | <leader>gd | 
-| log    | Gitlog    | <leader>gl | 
+| init   | Gitinit   | <leader>gi |
+| add    | Gitadd    | <leader>ga |
+| commit | Gitcommit | <leader>gc |
+| push   | Gitpush   | <leader>gp |
+| status | Gitstatus | <leader>gs |
+| diff   | Gitdif    | <leader>gd |
+| log    | Gitlog    | <leader>gl |
 -----------------------------------
