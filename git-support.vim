@@ -1,8 +1,8 @@
 
 command Gitinit :!git init
 command Gitadd :!git add %
-command Gitcommit :call s:GitCommit()
-command Gitpush :call s:GitPush()
+command Gitcommit :call <SID>GitCommit()
+command Gitpush :call <SID>GitPush()
 command Gitstatus :!git status
 command Gitdiff :!git diff
 command Gitlog :!git log
@@ -18,6 +18,7 @@ nmap <leader>gl :Gitlog<cr>
 func! s:GitCommit()
   let msg = input('commit message > ')
   if msg == ''
+    " TODO: When no commit message processes
 "     let res = confirm('no commit message?', "&Ok\n&No")
 "     if res == 1
 "     else
