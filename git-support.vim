@@ -17,8 +17,18 @@ nmap <leader>gl :Gitlog<cr>
 
 func! s:GitCommit()
   let msg = input('commit message > ')
-  echo msg
-"   exe "!git commit % -m '" . msg . "'"
+  if msg == ''
+"     let res = confirm('no commit message?', "&Ok\n&No")
+"     if res == 1
+"     else
+"       return
+"     endif
+    echohl ErrorMsg
+    echo 'no commit message'
+    echohl None
+    return
+  endif
+  exe "!git commit % -m '" . msg . "'"
 endfunc
 
 func! s:GitPush()
