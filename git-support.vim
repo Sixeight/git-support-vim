@@ -1,4 +1,7 @@
 
+" TODO: 別のディレクトリにいる時でも正常に動作するようにする。
+"       cdすれば良いだけなので近いうちにやる
+
 command Gitinit :!git init
 command Gitadd :!git add %
 command Gitcommit :call <SID>GitCommit()
@@ -6,6 +9,7 @@ command Gitpush :call <SID>GitPush()
 command Gitstatus :!git status
 command Gitdiff :!git diff
 command Gitlog :!git log
+command Github :!git hub
 
 nmap <leader>gi :Gitinit<cr>
 nmap <leader>ga :Gitadd<cr>
@@ -14,16 +18,11 @@ nmap <leader>gp :Gitpush<cr>
 nmap <leader>gs :Gitstatus<cr>
 nmap <leader>gd :Gitdiff<cr>
 nmap <leader>gl :Gitlog<cr>
+nmap <leader>gh :Github<cr>
 
 func! s:GitCommit()
   let msg = input('commit message > ')
   if msg == ''
-    " TODO: When no commit message processes
-"     let res = confirm('no commit message?', "&Ok\n&No")
-"     if res == 1
-"     else
-"       return
-"     endif
     echohl ErrorMsg
     echo 'no commit message'
     echohl None
