@@ -20,3 +20,5 @@ this script supports a using git
 | diff   | Gitdif    | <leader>gd |
 | log    | Gitlog    | <leader>gl |
 -----------------------------------
+
+( hub | Github | <leader>gh ) / need cho45 hack (http://subtech.g.hatena.ne.jp/cho45/20080516/1210865714)
