@@ -1,21 +1,22 @@
 
-command! Gitinit :!git init
-command! Gitadd :!git add %
-command! Gitcommit :call <SID>GitCommit()
-command! Gitpush :call <SID>GitPush()
-command! Gitstatus :call <SID>SetBuffer("status")
-command! Gitdiff :call <SID>SetBuffer("diff")
-command! Gitlog :call <SID>SetBuffer("log")
-command! Github :!git hub
+command! GitInit :!git init
+command! GitAdd :!git add %
+command! GitCommit :call <SID>GitCommit(0)
+command! GitCommitWithMsg :call <SID>GitCommit(1)
+command! GitPush :call <SID>GitPush()
+command! GitStatus :call <SID>SetBuffer("status")
+command! GitDiff :call <SID>SetBuffer("diff")
+command! GitLog :call <SID>SetBuffer("log")
+command! GitHub :!git hub
 
-nmap <leader>gi :Gitinit<cr>
-nmap <leader>ga :Gitadd<cr>
-nmap <leader>gc :Gitcommit<cr>
-nmap <leader>gp :Gitpush<cr>
-nmap <leader>gs :Gitstatus<cr>
-nmap <leader>gd :Gitdiff<cr>
-nmap <leader>gl :Gitlog<cr>
-nmap <leader>gh :Github<cr>
+nmap <leader>gi :GitInit<cr>
+nmap <leader>ga :GitAdd<cr>
+nmap <leader>gc :GitCommitWithMsg<cr>
+nmap <leader>gp :GitPush<cr>
+nmap <leader>gs :GitStatus<cr>
+nmap <leader>gd :GitDiff<cr>
+nmap <leader>gl :GitLog<cr>
+nmap <leader>gh :GitHub<cr>
 
 "--- main script ---
 func! s:SetBuffer(cmd)
@@ -59,15 +60,19 @@ func! s:SetBuffer(cmd)
   hi link GitDiffAtmark function
 endfunc
 
-func! s:GitCommit()
-  let msg = input('commit message > ')
-  if msg == ''
-    echohl ErrorMsg
-    echo 'no commit message'
-    echohl None
-    return
+func! s:GitCommit(edit)
+  if a:edit == 1
+    let msg = input('commit message > ')
+    if msg == ''
+      echohl ErrorMsg
+      echo 'no commit message'
+      echohl None
+      return
+    endif
+    exe "!git commit % -m '" . msg . "'"
+  else
+    exe '!git commit %'
   endif
-  exe "!git commit % -m '" . msg . "'"
 endfunc
 
 func! s:GitPush()
@@ -75,5 +80,4 @@ func! s:GitPush()
   let from = input('from > ', 'master')
   exe "!git push " . to . ' ' . from
 endfunc
-
 
